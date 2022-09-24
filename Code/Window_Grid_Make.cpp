@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+#include<graphics.h>
+using namespace std;
+
+
+void plotgraph(int screenWidth,int screenHeight)
+{
+	//plotting grids
+	for(int i=screenWidth/2;i<=screenWidth;i=i+25)
+	{
+		for(int j=screenHeight/2;j<=screenHeight;j=j+25)
+		{
+			setcolor(WHITE);
+			line(0,j,screenWidth,j);
+			line(i,0,i,screenHeight);
+		}
+	}
+	for(int i=screenWidth/2;i>=0;i=i-25)
+	{
+		for(int j=screenHeight/2;j>=0;j=j-25)
+		{
+			setcolor(WHITE);
+			line(0,j,screenWidth,j);
+			line(i,0,i,screenHeight);
+		}
+	}
+	//plotting origin axes
+	setcolor(YELLOW);
+	line(0,screenHeight/2,screenWidth,screenHeight/2);
+	line(screenWidth/2,0,screenWidth/2,screenHeight);
+}
+
+int main(){
+	int gd=DETECT,gm;
+	initgraph(&gd,&gm,"c:\\tc\\bgi");
+	
+	//window size measurement and initialization
+	DWORD screenWidth=GetSystemMetrics(SM_CXSCREEN);
+	DWORD screenHeight=GetSystemMetrics(SM_CYSCREEN);
+	initwindow(screenWidth,screenHeight,"",50,50);
+	
+	plotgraph(screenWidth,screenHeight);
+	
+	getch();
+	closegraph();
+	return 0;
+	
+}
